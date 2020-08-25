@@ -16,9 +16,9 @@ int main()
    char A;
    A = 65; //A의 ascii값은 65
    printf("문자값 출력 : "); printf("%c\n",A);
-   printf("문자(A)의 bytes수 출력:"); printf("%ld\n",sizeof(A));
+   printf("문자(A)의 bytes수 출력 : "); printf("%ld\n",sizeof(A));
    /*문자열 ㅇ상수 : 하나이상의 글자를 다룸,""사용*/
-   printf("문자열 출력:"); printf("%s\n","String Value");
+   printf("문자열 출력 : "); printf("%s\n","String Value");
    printf("문자열(S***)의 bytes수 출력 : "); printf("%ld\n",sizeof("String Value"));
    //문자열을 표현하면,'0'(NULL값 이라고함.)이 문자열끝에 자동추가(즉, 1byte가 증가한다)
 }
