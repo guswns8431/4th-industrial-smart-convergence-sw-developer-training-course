@@ -1,9 +1,9 @@
 #include <stdio.h>
-#define P(x) printf("%d\n",x)
 
 int main()
 {
-    P(1);
+    int a[4] = {1,2,3,4};
+    printf("%p",&a[2]);
 
     return 0;
 }
