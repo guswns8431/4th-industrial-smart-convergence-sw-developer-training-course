@@ -2,7 +2,7 @@
 int main()
 {
     int M;
-    M = 8;
+    M = 9;
     printf("%f\n",(float)M);
     printf("%d\n",M);
 
