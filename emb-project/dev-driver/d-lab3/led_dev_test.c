@@ -21,8 +21,8 @@ struct gpio
 static struct gpio *gpj2;
 int led_dev_open(struct inode* inode, struct file* filp)
 {
-	gpj2->con &= ~(0xf <<(BIT_SHIFT*4));
-	gpj2->con |= (0xf <<(BIT_SHIFT*4));
+	gpj2->con &= ~(0xf << (BIT_SHIFT*4));
+	gpj2->con |= (0xf << (BIT_SHIFT*4));
 	return 0;
 }
 
@@ -31,13 +31,31 @@ int led_dev_close(struct inode* inode, struct file* filp)
 	return 0;
 }
 
-ssize_t led_dev_read(struct file* filp, const char* buff, size_t size,loff_t* off)
+ssize_t led_dev_read(struct file* filp, char* buff, size_t size, loff_t* offset)
+{
+	unsigned int data;
+	
+	data = (gpj2->dat & ~(0x1 << BIT_SHIFT));
+	data = data >> BIT_SHIFT;
+	if(data > 0){
+		*buff = 0;
+	}else{
+		*buff = 1;
+	}
+	
+	return 1;
+}
+
+ssize_t led_dev_write(struct file* filp, const char* buff, size_t, loff_t* offset)
 {
 	int data;
-if(*buff > 0){
-		data = 0;
-	}else{
-		data = 1;
+	
+	if(data > 0){
+		*buff = 0;
+	}
+	else
+	{
+		*buff = 1;
 	}
 	
 	gpj2->dat &= ~(0x1 << BIT_SHIFT);
@@ -53,7 +71,7 @@ struct file_operations led_dev_fop =
 	release : led_dev_close,
 };
 
-int init_led)dev(void)
+int init_led_dev(void)
 {
 	int rval;
 	gpj2 = (struct gpio*)ioremap(GPJ2_BASE, sizeof(struct gpio));
@@ -83,4 +101,4 @@ void cleanup_led_dev(void)
 
 module_init(init_led_dev);
 module_exit(cleanup_led_dev);
-MODULE_LICENSE(GPL)		
+MODULE_LICENSE("GPL");
