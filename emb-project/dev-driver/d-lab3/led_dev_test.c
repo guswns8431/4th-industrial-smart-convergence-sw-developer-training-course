@@ -50,12 +50,12 @@ ssize_t led_dev_write(struct file* filp, const char* buff, size_t, loff_t* offse
 {
 	int data;
 	
-	if(data > 0){
-		*buff = 0;
+	if(*buff > 0){
+		data = 0;
 	}
 	else
 	{
-		*buff = 1;
+		data = 1;
 	}
 	
 	gpj2->dat &= ~(0x1 << BIT_SHIFT);
