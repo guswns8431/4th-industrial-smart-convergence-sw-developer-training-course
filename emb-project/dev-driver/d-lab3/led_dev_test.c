@@ -1,4 +1,4 @@
-#include <linux/kernel>
+#include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -7,7 +7,7 @@
 #define LED_DEV_MAJOR (250)
 #define DEVICE NAME ("led_dev")
 
-#define GPJ2_BASE (0xE0300240)
+#define GPJ2_BASE (0x7E215000)
 
 #define BIT_SHIFT (0)
 
@@ -22,7 +22,7 @@ static struct gpio *gpj2;
 int led_dev_open(struct inode* inode, struct file* filp)
 {
 	gpj2->con &= ~(0xf << (BIT_SHIFT*4));
-	gpj2->con |= (0xf << (BIT_SHIFT*4));
+	gpj2->con |= (0x1 << (BIT_SHIFT*4));
 	return 0;
 }
 
