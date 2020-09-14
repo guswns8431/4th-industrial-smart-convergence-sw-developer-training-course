@@ -48,7 +48,7 @@ void loop() {
   }
   
   //상태 변화 이후 시간 감시(버튼의 채터링 대기), 상태 변화 다시 확인
-  if((millis()-lastDebounceTime) > debounceDelay && lastDebounceTime != 0)
+  if((millis()-lastDebounceTime) > debounceDelay && lastDebounceTime != 0) //변화가 있다면 lastDebounceTime이 변화가 있기 때문에 변화가 있는지 확인 
   {
     Serial.print("debounceTime = ");
     Serial.print(millis()-lastDebounceTime);
