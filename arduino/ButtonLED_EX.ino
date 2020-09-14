@@ -24,9 +24,8 @@ void loop() {
     delay(1000);
   }
 /*
-  //아래 과정이 무슨 과정인지 이해가 안감
   digitalWrite(led1,HIGH); // off
-  delay(1000);
+  delay(1000); //delay가 있어야 위의 코드를 계속 유지하고 사람이 육안으로 확인할 수 있는 상태가 된다. delay가 없으면 사람이 육안으로 확인하기 힘듦
   digitalWrite(led1,LOW); // on
   delay(1000);
 */
