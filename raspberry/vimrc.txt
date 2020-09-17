@@ -1,0 +1,61 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'file:///home/jjeaby/Dev/tools/vim-plugin'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'stevearc/vim-arduino'
+call vundle#end()            " required
+"filetype plugin indent on    " required
+"NERDTree ON 단축키를 "\nt"로 설정
+let mapleader="\\"
+map <Leader>nt <ESC>:NERDTree<CR>
+let NERDTreeShowHidden=1
+" let NERDTreeQuitOnOpen=1
+let g:ctrlp_custom_ignore = {
+   \ 'dir':  '\.git$\|vendor$',
+     \ 'file': '\v\.(exe|so|dll)$'
+ \ }
+
+colorscheme desert
+
+" Tag List 환경설정
+filetype on                                 "vim filetype on
+"Source Explorer 환경설정
+nmap <F8> :SrcExplToggle<CR>                "F8 Key = SrcExpl Toggling
+nmap <C-H> <C-W>h                           "왼쪽 창으로 이동
+nmap <C-J> <C-W>j                           "아래 창으로 이동
+nmap <C-K> <C-W>k                           "윗 창으로 이동
+nmap <C-L> <C-W>l                           "오른쪽 창으로 이동
+set number            " line 표시를 해줍니다.
+set ai                    " auto indent
+set si                    " smart indent
+set cindent            " c style indent
+set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
+set tabstop=4         " tab을 4칸으로
+set ignorecase      " 검색시 대소문자 구별하지않음
+set hlsearch         " 검색시 하이라이트(색상 강조)
+set expandtab       " tab 대신 띄어쓰기로
+set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트
+set nocompatible   " 방향키로 이동가능
+set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
+set bs=indent,eol,start    " backspace 키 사용 가능
+set history=1000    " 명령어에 대한 히스토리를 1000개까지
+set ruler              " 상태표시줄에 커서의 위치 표시
+set nobackup      " 백업파일을 만들지 않음
+set title               " 제목을 표시
+set showmatch    " 매칭되는 괄호를 보여줌
+set nowrap         " 자동 줄바꿈 하지 않음
+set wmnu           " tab 자동완성시 가능한 목록을 보여줌
+if has("syntax")
+        syntax on
+endif
