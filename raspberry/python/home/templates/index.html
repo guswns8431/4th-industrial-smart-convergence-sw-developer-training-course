@@ -33,7 +33,7 @@
                     <button onclick="off()">OFF</button>
                 </div>
                 <div>
-                    <button onclick="all()">ALL</button>
+                    <button onclick="all_led()">ALL</button>
                 </div>
                 <div>
                     <button onclick="showtime()">Show Time</button>
@@ -147,7 +147,7 @@
                             }
                         });
                     }
-            function all(){
+            function all_led(){
                 fetch("/led/all").then(response=> response.text()).then(data=> {
                         console.log(data);
                         let result = document.querySelector("#result");
