@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HOME NETWORK</title>
+        <link rel="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>이런 숙박시설</h2>
+            </div>
+            <div class="main">
+                <div>
+                    <button onclick="red_on()">RED ON</button>
+                </div>
+                <div>
+                    <button onclick="red_off()">RED OFF</button>
+                </div>
+                <div>
+                    <button onclick="yellow_on()">yellow On</button>
+                </div>
+                <div>
+                    <button onclick="yellow_off()">yellow OFF</button>
+                </div>
+                <div>
+                    <button onclick="green_on()">green On</button>
+                </div>
+                <div>
+                    <button onclick="green_off()">green OFF</button>
+                </div>
+                <div>
+                    <button onclick="off()">OFF</button>
+                </div>
+                <div>
+                    <button onclick="all()">ALL</button>
+                </div>
+                <div>
+                    <button onclick="showtime()">Show Time</button>
+                </div>
+                <div>
+                    <button onclick="gpio_cleanup()">GPIO CLEANUP</button>
+                </div>
+            </div>
+            <div id="result">
+
+            </div>
+        </div>
+        <script>
+            function red_on(){
+                fetch("/led/red").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>red is runnig</h1>";
+                        }
+                        else{
+                            result.innerHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+            function red_off(){
+                fetch("/led/offred").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>red is stopping</h1>";
+                        }
+                        else
+                        {
+                            result.innterHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+            function yellow_on(){
+                fetch("/led/yellow").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>yellow is runnig</h1>";                            }
+                            else
+                            {
+                                result.innerHTML = "<h1>error</h1>";
+                            }
+                        });
+                    }
+            function yellow_off(){
+                fetch("/led/offyellow").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>yellow is stopping</h1>";
+                        }
+                        else
+                        {
+                                result.innterHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+            function green_on(){
+                fetch("/led/green").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>green is runnig</h1>";
+                        }
+                        else{
+                            result.innerHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+            function green_off(){
+                fetch("/led/offgreen").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>green is stopping</h1>";
+                        }
+                        else
+                        {
+                            result.innterHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+            function off(){
+                fetch("/led/off").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>ALL LED is stopping</h1>";
+                        }
+                        else
+                        {
+                            result.innterHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+                function showtime(){
+                    fetch("/led/showtime").then(response=> response.text()).then(data=> {
+                            console.log(data);
+                            let result = document.querySelector("#result");
+                            if(data=="ok"){
+                                result.innerHTML = "<h1>showtime</h1>";
+                            }
+                            else{
+                                result.innerHTML = "<h1>error</h1>";
+                            }
+                        });
+                    }
+            function all(){
+                fetch("/led/all").then(response=> response.text()).then(data=> {
+                        console.log(data);
+                        let result = document.querySelector("#result");
+                        if(data=="ok"){
+                            result.innerHTML = "<h1>ALL LED is running</h1>";
+                        }
+                        else
+                        {
+                            result.innterHTML = "<h1>error</h1>";
+                        }
+                    });
+                }
+                function gpio_cleanup(){
+                    fetch("/gpio/cleanup").then(response=> response.text()).then(data=> {
+                            console.log(data);
+                            let result = document.querySelector("#result");
+                            if(data=="ok"){
+                                result.innerHTML = "<h1>gpio cleanup</h1>";
+                            }
+                            else
+                            {
+                                result.innterHTML = "<h1>error</h1>";
+                            }
+                        });
+                    }
+        </script>
+    </body>
+</html>
