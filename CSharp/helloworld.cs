@@ -8,7 +8,7 @@ namespace csharp
         {
             Console.WriteLine("Hello Wold!");
             Console.Write("hihihi");
-            Console.WriteLine("hello world");
+            Console.WriteLine("hello world!");
         }
     }
 }
